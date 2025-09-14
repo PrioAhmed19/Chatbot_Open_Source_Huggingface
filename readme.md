@@ -1,65 +1,91 @@
-# MultiPDF Chat App
 
-> You can find the tutorial for this project on [YouTube](https://youtu.be/dXxQ0LR-3Hg).
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.18%2B-ff69b4)
+![LangChain](https://img.shields.io/badge/LangChain-0.0.184-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![HuggingFace](https://img.shields.io/badge/Models-HuggingFace-orange)
 
-## Introduction
-------------
-The MultiPDF Chat App is a Python application that allows you to chat with multiple PDF documents. You can ask questions about the PDFs using natural language, and the application will provide relevant responses based on the content of the documents. This app utilizes a language model to generate accurate answers to your queries. Please note that the app will only respond to questions related to the loaded PDFs.
+**Last Updated:** September 14, 2025
 
-## How It Works
-------------
+A Streamlit app that lets you **chat with multiple PDF documents** using open-source HuggingFace models. Load PDFs, ask questions, and get context-aware answers backed by vector search.
 
-![MultiPDF Chat App Diagram](./docs/PDF-LangChain.jpg)
+---
 
-The application follows these steps to provide responses to your questions:
+## ✨ Features
 
-1. PDF Loading: The app reads multiple PDF documents and extracts their text content.
+- 📂 Upload and process multiple PDF files at once  
+- 🧩 Automatic text splitting into overlapping chunks  
+- 🔍 Semantic search with FAISS and HuggingFace embeddings  
+- 🤖 Q&A powered by open LLMs (e.g. Flan-T5)  
+- 💬 Persistent conversation memory  
 
-2. Text Chunking: The extracted text is divided into smaller chunks that can be processed effectively.
+---
 
-3. Language Model: The application utilizes a language model to generate vector representations (embeddings) of the text chunks.
+## 🛠️ Tech Stack
 
-4. Similarity Matching: When you ask a question, the app compares it with the text chunks and identifies the most semantically similar ones.
+| Component          | Tool |
+|--------------------|------|
+| UI                 | [Streamlit](https://streamlit.io) |
+| PDF parsing        | [PyPDF2](https://pypi.org/project/pypdf2/) |
+| Text splitting     | LangChain `CharacterTextSplitter` |
+| Embeddings         | `sentence-transformers/all-MiniLM-L6-v2` |
+| Vector store       | [FAISS](https://github.com/facebookresearch/faiss) |
+| LLM (open source)  | `google/flan-t5-small` (or any HuggingFace model) |
+| Memory             | LangChain `ConversationBufferMemory` |
 
-5. Response Generation: The selected chunks are passed to the language model, which generates a response based on the relevant content of the PDFs.
+---
 
-## Dependencies and Installation
-----------------------------
-To install the MultiPDF Chat App, please follow these steps:
+## Installation
 
-1. Clone the repository to your local machine.
+1. **Clone the repository:**
 
-2. Install the required dependencies by running the following command:
-   ```
-   pip install -r requirements.txt
-   ```
+```bash
+git clone https://github.com/yourusername/pdf-chatbot.git
+cd pdf-chatbot
 
-3. Obtain an API key from OpenAI and add it to the `.env` file in the project directory.
-```commandline
-OPENAI_API_KEY=your_secrit_api_key
 ```
 
+2.**Create a virtual environment**
+
+```bash
+
+python -m venv .venv
+source .venv/bin/activate   # Linux/Mac
+.venv\Scripts\activate      # Windows
+
+```
+
+3.**Install dependencies:**
+
+```bash
+pip install -r requirements.txt
+
+```
+
+4.**Set environment variable:**
+
+-GOOGLE_API_KEY=<your_google_api_key>
+-GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_gemini_key.json>
+-Create .env file
+
+
 ## Usage
------
-To use the MultiPDF Chat App, follow these steps:
 
-1. Ensure that you have installed the required dependencies and added the OpenAI API key to the `.env` file.
+### 1. Run the streamlit app
 
-2. Run the `main.py` file using the Streamlit CLI. Execute the following command:
-   ```
-   streamlit run app.py
-   ```
+```bash
 
-3. The application will launch in your default web browser, displaying the user interface.
+streamlit run app.py
 
-4. Load multiple PDF documents into the app by following the provided instructions.
+```
 
-5. Ask questions in natural language about the loaded PDFs using the chat interface.
+### 2. Upload PDFs in the sidebar and click Process.
+### 3. Ask questions in the chat input.
+### 4. The chatbot will provide answers based on the PDF contents and maintain conversation history.
 
-## Contributing
-------------
-This repository is intended for educational purposes and does not accept further contributions. It serves as supporting material for a YouTube tutorial that demonstrates how to build this project. Feel free to utilize and enhance the app based on your own requirements.
 
-## License
--------
-The MultiPDF Chat App is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+
+## Acknowledgement
+
+This project is built using an updated structure, updated methods as the day stands [14/09/2025], and the open-source HuggingFace models. We would like to give a special shoutout to the tutorial by **Alejandro AO - Software & Ai** ([YouTube link](https://www.youtube.com/watch?v=dXxQ0LR-3Hg&t=3924s)), which inspired the original workflow and provided valuable guidance on PDF handling and conversational AI integration.
