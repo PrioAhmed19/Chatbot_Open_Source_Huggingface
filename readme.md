@@ -7,7 +7,7 @@
 
 **Last Updated:** September 14, 2025
 
-A Streamlit app that lets you **chat with multiple PDF documents** using open-source HuggingFace models. Load PDFs, ask questions, and get context-aware answers backed by vector search.
+A Streamlit app that can **chat with multiple PDF documents** using open-source HuggingFace models. Load PDFs, ask questions, and get context-aware answers backed by vector search.
 
 ---
 
